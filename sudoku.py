@@ -53,9 +53,8 @@ def solve(board, pos):
 
     return 0
 
-
+# Find the next board position
 def next_position(pos):
-    
     tPos = pos[0]*9 + pos[1] +1;
     newpos = [0,0]
     newpos[0] = int(tPos / 9)
@@ -86,7 +85,8 @@ def get_options(board, pos):
     #strike out any options already present in the column
     for i in range(0,9):
         val = board [ i ][ pos[1] ]
-    
+
+        # If the value in the current index exists in our option list, remove it
         if val in options:
             options.remove(val)
 
@@ -99,6 +99,7 @@ def get_options(board, pos):
         for j in range(box_start_x, box_start_x+3):
             val = board[i][j]
 
+            # If the value in the current index exists in our option list, remove it
             if val in options: 
                 options.remove(val)
                 
