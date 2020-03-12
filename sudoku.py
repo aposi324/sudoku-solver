@@ -4,12 +4,18 @@
 # Last Edited: 2/5/2020
 
 from array import *
-
+from graphics import *
+from Board import *
 import pprint
 import math
 
 def main():
 
+    win = GraphWin("Sudoku Solver", 400, 400)
+   
+    board = Board()
+    draw(win, board)
+    input()
     board = [   [6,0,7,4,1,0,0,9,0],
                 [0,1,0,3,9,0,6,0,0],
                 [0,9,0,6,2,0,0,0,5],
@@ -108,6 +114,26 @@ def get_options(board, pos):
 def place_num(board, pos, val):
     board[pos[0]][pos[1]] = val
     return board
+
+def draw(window, board):
+    print("hiyo")
+
+  
+    margin = 50
+    for i in range(0, 3):
+        for j in range(0, 3):
+            currX = i*100
+            currY = j *100
+            #rect = Rectangle(Point(currX+margin, currY+margin), Point(currX+100+margin, currY+100+margin))
+            #rect.draw(window)
+            draw_bold_box(window,currX+margin, currY+margin)
+
+def draw_bold_box(window, x, y):
+    thickness = 3
+    for i in range(0, thickness):
+        rect = Rectangle(Point(x+i,y+i), Point(x+(100+i), y+(100+i)))
+        rect.draw(window)
+
 
 if __name__ == '__main__':
     main()
